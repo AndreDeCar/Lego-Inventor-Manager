@@ -33,8 +33,8 @@
 
 - **Tâche : 2**
   - Responsable : De Carvalho André
-  - % d’avancement : 75
-  - Commentaires : Pas de retour de Mateo par rapport au journal de travail
+  - % d’avancement : 100
+  - Commentaires : 
 
 - **Tâche : 3**
   - Responsable : De Carvalho André
