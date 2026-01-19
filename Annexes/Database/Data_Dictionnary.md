@@ -54,6 +54,31 @@ Attributs :
 
 ---
 
+### cupboards
+Description : Représente les armoires servant à stocker les boîtes
+
+Attributs :
+- Number (VARCHAR(4)) : Identifiant unique de l'armoire [Clé primaire]
+
+---
+
+### classrooms
+Description : Représente les salles où se trouveront les armoires
+
+Attributs :
+- Code (BYTE) : Identifiant unique de la salle [Clé primaire]
+- Name (CHAR(50)) : Nom de la salle [Non nul]
+- Location (ENUM) : Sites différents de l'école (Ste-Croix, Yverdon-les-Bains) [Non null]
+
+### classroom_locations (énumération)  
+**Description :** Définit les localisations possibles des classes
+
+Valeurs :
+- Ste-Croix 
+- Yverdon-les-Bains
+
+---
+
 ## Associations :
 - to be composed of : Un kit est composé de plusieurs pièces / Les pièces appartiennent à exactement un kit (1,n – 1,1)
 - to contain : Une boîte peut contenir zéro ou un type de pièce / une pièce est contenue dans exactement une boîte (0,1 – 1,1)
