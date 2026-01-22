@@ -9,11 +9,44 @@ Lego-Inventor-Manager is a web application that allows users to manage the parts
 
 ### Prerequisites
 
+- PHP version 8.4.13
+- Laravel version 
+- PHP extensions : pdo_mariadb
+- Package manager : Composer
+- OS supported : Windows, Debian & Ubuntu
+
 ### Configuration
+
+To configure the application, you'll need to set up your environment variables.
+
+1.  Copy the example environment file:
+    ```shell
+    cp .env.example .env
+    ```
+2.  Open the `.env` file and edit the database variables to match your local setup. You can choose between SQLite, MySQL, or MariaDB by uncommenting the appropriate section.
 
 ## Deployment
 
 ### On dev environment
+
+After cloning the repository and configuring your .env file, run the following commands from the root of the project to get everything set up.
+
+1.  **Install PHP dependencies** using Composer:
+    ```shell
+    composer install
+    ```
+2.  **Update the autoloader** (optional, but good practice during development):
+    ```shell
+    composer dump-autoload
+    ```
+3.  **Run database migrations** to create the necessary tables:
+    ```shell
+    php artisan migrate
+    ```
+4.  **(Optional) Seed the database** with initial mock data:
+    ```shell
+    php artisan db:seed
+    ```
 
 ### On integration environment
 
@@ -33,7 +66,8 @@ project/
 │   └── ...
 │
 ├── bootstrap/
-│   └── app.php
+│   ├── app.php
+│   └── providers.php
 │
 ├── config/
 │   ├── app.php
@@ -53,12 +87,9 @@ project/
 ├── resources/
 │   ├── views/
 │   ├── js/
-│   ├── css/
-│   └── lang/
+│   └── css/
 │
 └── routes/
     ├── web.php
-    ├── api.php
-    ├── console.php
-    └── channels.php
+    └── console.php
 ```
