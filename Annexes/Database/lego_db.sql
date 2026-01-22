@@ -109,9 +109,8 @@ INSERT INTO boxes (number, size, cupboard_id) VALUES
 (30, 'big', 2);
 
 INSERT INTO kits (number) VALUES
-(500),
-(501),
-(502);
+(4211),
+(60215);
 
 INSERT INTO pieces (number, color, name, quantity, image_url, kit_id, box_id) VALUES
 (3001, 'red', 'Brick 2x4', 50, 'https://example.com/pieces/3001-red.jpg', 1, 1),
@@ -128,6 +127,12 @@ INSERT INTO builds_pieces (build_id, piece_id, quantity) VALUES
 (1, 2, 2),   -- Mini voiture utilise 2x Brick 2x3 bleu
 (2, 3, 6),   -- Petit robot utilise 6x Plate 1x1 jaune
 (2, 4, 3);   -- Petit robot utilise 3x Brick 2x6 noir
+
+INSERT INTO kits_pieces (kit_id, piece_id) VALUES
+(1, 1),   -- Le kit 1 contient la pièce 1
+(1, 3),   -- Le kit 1 contient aussi la pièce 3
+(2, 2),   -- Le kit 2 contient la pièce 2
+(2, 4);   -- Le kit 2 contient également la pièce 4
 
 INSERT INTO users (name, password_hash) VALUES
 ('admin', '$2y$10$abcdefghijklmnopqrstuv123456789012345678901234567890'),
