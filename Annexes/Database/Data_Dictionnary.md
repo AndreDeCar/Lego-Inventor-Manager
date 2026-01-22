@@ -80,9 +80,11 @@ Valeurs :
 ---
 
 ## Associations :
-- to be composed of : Un kit est composé de plusieurs pièces / Les pièces appartiennent à exactement un kit (1,n – 1,1)
+- to be composed of : Un kit est composé de plusieurs pièces / Une pièce appartient à un ou plusieurs kits (1,n – 1,n)
 - to contain : Une boîte peut contenir zéro ou un type de pièce / une pièce est contenue dans exactement une boîte (0,1 – 1,1)
-- to use : Un build utilise plusieurs pièces et une pièce peut être utilisée dans plusieurs builds (0,n - 1,n)
+- to use : Un build utilise plusieurs pièces / une pièce peut être utilisée dans plusieurs builds (0,n - 1,n)
+- to place : Une boîte est placée dans exactement une armoire / une armoire contient une ou plusieurs boîtes (1,1 - 1,n)
+- to be located : Une armoire se trouve dans une salle de classe / une salle de classe contient aucune ou plusieurs armoires (1,1 - 0,n)
 
  **Attribut d’association :**
 - Quantity (INT) : Nombre de pièces utilisées dans le build
