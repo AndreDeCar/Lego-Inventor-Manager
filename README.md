@@ -10,7 +10,7 @@ Lego-Inventor-Manager is a web application that allows users to manage the parts
 ### Prerequisites
 
 - PHP version 8.4.13
-- Laravel version 
+- Laravel version 12.x
 - PHP extensions : pdo_mariadb
 - Package manager : Composer
 - OS supported : Windows, Debian & Ubuntu
