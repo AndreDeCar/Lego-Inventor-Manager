@@ -13,10 +13,6 @@ CREATE TABLE IF NOT EXISTS pieces (
     image_url VARCHAR(500) NOT NULL UNIQUE,
     UNIQUE (number, color),
 
-    kit_id INT NOT NULL,
-    CONSTRAINT fk_pieces_kit
-    FOREIGN KEY (kit_id) REFERENCES kits(id),
-
     box_id INT NOT NULL,
     CONSTRAINT fk_pieces_box
     FOREIGN KEY (box_id) REFERENCES boxes(id)
@@ -65,7 +61,7 @@ CREATE TABLE IF NOT EXISTS users (
     password_hash CHAR(60) NOT NULL UNIQUE
 );
 
--- table (n:m) builds_pieces
+-- tables (n:m)
 CREATE TABLE IF NOT EXISTS builds_pieces (
     build_id INT NOT NULL,
     piece_id INT NOT NULL,
@@ -78,6 +74,20 @@ CREATE TABLE IF NOT EXISTS builds_pieces (
     FOREIGN KEY (build_id) REFERENCES builds(id),
 
     CONSTRAINT fk_bp_piece
+    FOREIGN KEY (piece_id) REFERENCES pieces(id)
+);
+
+CREATE TABLE IF NOT EXISTS kits_pieces (
+    kit_id INT NOT NULL,
+    piece_id INT NOT NULL,
+
+    CONSTRAINT pk_kits_pieces
+    PRIMARY KEY (kit_id, piece_id),
+
+    CONSTRAINT fk_kp_kit
+    FOREIGN KEY (kit_id) REFERENCES kits(id),
+
+    CONSTRAINT fk_kp_piece
     FOREIGN KEY (piece_id) REFERENCES pieces(id)
 );
 
