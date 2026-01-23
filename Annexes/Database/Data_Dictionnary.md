@@ -15,7 +15,7 @@ Attributs :
 Description : Représente les kits composés de plusieurs pièces
 
 Attributs :
-- Number (SMALLINT) : Identifiant unique du kit [Clé primaire]
+- Number (INT) : Identifiant unique du kit [Clé primaire]
 
 ---
 

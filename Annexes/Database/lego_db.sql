@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS pieces (
 
 CREATE TABLE IF NOT EXISTS kits (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    number SMALLINT NOT NULL UNIQUE
+    number INT NOT NULL UNIQUE
 );
 
 CREATE TABLE IF NOT EXISTS boxes (
@@ -92,48 +92,3 @@ CREATE TABLE IF NOT EXISTS kits_pieces (
 );
 
 SET FOREIGN_KEY_CHECKS = 1;
-
--- seeder db example data
-
-INSERT INTO classrooms (code, name, location) VALUES
-(101, 'Salle Robotique', 'Yverdon-les-Bains'),
-(102, 'Salle Création', 'Ste-Croix');
-
-INSERT INTO cupboards (number, classroom_id) VALUES
-('A01', 1),
-('B12', 2);
-
-INSERT INTO boxes (number, size, cupboard_id) VALUES
-(10, 'small', 1),
-(20, 'medium', 1),
-(30, 'big', 2);
-
-INSERT INTO kits (number) VALUES
-(4211),
-(60215);
-
-INSERT INTO pieces (number, color, name, quantity, image_url, kit_id, box_id) VALUES
-(3001, 'red', 'Brick 2x4', 50, 'https://example.com/pieces/3001-red.jpg', 1, 1),
-(3002, 'blue', 'Brick 2x3', 30, 'https://example.com/pieces/3002-blue.jpg', 1, 2),
-(6141, 'yellow', 'Plate 1x1 Round', 100, 'https://example.com/pieces/6141-yellow.jpg', 2, 2),
-(2456, 'black', 'Brick 2x6', 20, 'https://example.com/pieces/2456-black.jpg', 3, 3);
-
-INSERT INTO builds (name, image_url) VALUES
-('Mini Voiture', 'https://example.com/builds/car.jpg'),
-('Petit Robot', 'https://example.com/builds/robot.jpg');
-
-INSERT INTO builds_pieces (build_id, piece_id, quantity) VALUES
-(1, 1, 4),   -- Mini voiture utilise 4x Brick 2x4 rouge
-(1, 2, 2),   -- Mini voiture utilise 2x Brick 2x3 bleu
-(2, 3, 6),   -- Petit robot utilise 6x Plate 1x1 jaune
-(2, 4, 3);   -- Petit robot utilise 3x Brick 2x6 noir
-
-INSERT INTO kits_pieces (kit_id, piece_id) VALUES
-(1, 1),   -- Le kit 1 contient la pièce 1
-(1, 3),   -- Le kit 1 contient aussi la pièce 3
-(2, 2),   -- Le kit 2 contient la pièce 2
-(2, 4);   -- Le kit 2 contient également la pièce 4
-
-INSERT INTO users (name, password_hash) VALUES
-('admin', '$2y$10$abcdefghijklmnopqrstuv123456789012345678901234567890'),
-('prof', '$2y$10$zyxwvutsrqponmlkjihgf987654321098765432109876543210');
