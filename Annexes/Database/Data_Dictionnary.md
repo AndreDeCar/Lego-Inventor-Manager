@@ -4,7 +4,7 @@
 Description : Contient les informations d’un type de pièce (identifiant, nom, quantité disponible et image)
 
 Attributs :
-- Number (SMALLINT) : Identifiant unique d'une pièce [Clé primaire]
+- Number (INT) : Identifiant unique d'une pièce [Clé primaire]
 - Name (VARCHAR(100)) : Nom de la pièce [Non nul] [Unique]
 - Quantity (INT) : Quantité de pièces [Non nul]
 - Image Url (VARCHAR(500)) : Url de l'image [Non nul] [Unique]
