@@ -11,10 +11,11 @@ class Cupboard extends Model
 
     protected $throwValidationExceptions = true;
 
-    protected $fillable = ['number'];
+    protected $fillable = ['number', 'classroom_id'];
 
     protected $rules = [
             'number' => 'required|string|max:4|unique:cupboards,number',
+            'classroom_id' => 'required|integer|exists:classrooms,id',
         ];
 
     public function boxes()
