@@ -1,0 +1,5 @@
+{
+    "require": {
+        "watson/validating": "^8.3"
+    }
+}
