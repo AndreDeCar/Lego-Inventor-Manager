@@ -7,5 +7,13 @@ use Watson\Validating\ValidatingTrait;
 
 class Kit extends Model
 {
-    //
+    use ValidatingTrait;
+
+    protected $throwValidationExceptions = true;
+
+    protected $fillable = ['number'];
+
+    protected $rules = [
+            'number' => 'required|integer|unique:kits,number',
+        ];
 }
