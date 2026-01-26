@@ -7,5 +7,14 @@ use Watson\Validating\ValidatingTrait;
 
 class Build extends Model
 {
-    //
+    use ValidatingTrait;
+
+    protected $throwValidationExceptions = true;
+
+    protected $fillable = ['name', 'image_url'];
+
+    protected $rules = [
+            'name' => 'required|string|max:100|unique:builds,name',
+            'image_url' => 'required|string|max:500',
+        ];
 }
