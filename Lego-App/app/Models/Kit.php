@@ -21,6 +21,6 @@ class Kit extends Model
     // Relation many-to-many entre Kits et Pieces via la table pivot kits_pieces (avec quantité)
     public function pieces()
     {
-        return $this->belongsToMany(Piece::class, 'kits_pieces')->withPivot('quantity');
+        return $this->belongsToMany(Piece::class, 'kits_pieces');
     }
 }
