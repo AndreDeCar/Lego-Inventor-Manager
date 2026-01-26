@@ -27,6 +27,7 @@ class Piece extends Model
         return $this->belongsTo(Box::class);
     }
 
+    // Relation many-to-many entre Pieces et Kits via la table pivot kits_pieces (avec quantité)
     public function kits()
     {
         return $this->belongsToMany(Kit::class, 'kits_pieces')->withPivot('quantity');
