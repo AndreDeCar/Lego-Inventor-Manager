@@ -16,4 +16,9 @@ class Kit extends Model
     protected $rules = [
             'number' => 'required|integer|unique:kits,number',
         ];
+
+    public function pieces()
+    {
+        return $this->belongsToMany(Piece::class, 'kits_pieces')->withPivot('quantity');
+    }
 }

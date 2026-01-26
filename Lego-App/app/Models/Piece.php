@@ -26,4 +26,9 @@ class Piece extends Model
     {
         return $this->belongsTo(Box::class);
     }
+
+    public function kits()
+    {
+        return $this->belongsToMany(Kit::class, 'kits_pieces')->withPivot('quantity');
+    }
 }
