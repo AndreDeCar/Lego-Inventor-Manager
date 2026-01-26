@@ -16,4 +16,9 @@ class Cupboard extends Model
     protected $rules = [
             'number' => 'required|string|max:4|unique:cupboards,number',
         ];
+
+    public function boxes()
+    {
+        return $this->hasMany(Box::class);
+    }
 }
