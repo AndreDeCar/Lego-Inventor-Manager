@@ -32,4 +32,9 @@ class Piece extends Model
     {
         return $this->belongsToMany(Kit::class, 'kits_pieces');
     }
+
+    public function builds()
+    {
+        return $this->belongsToMany(Build::class, 'builds_pieces')->withPivot('quantity');
+    }
 }

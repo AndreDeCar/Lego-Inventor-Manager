@@ -17,4 +17,9 @@ class Build extends Model
             'name' => 'required|string|max:100|unique:builds,name',
             'image_url' => 'required|string|max:500',
         ];
+
+    public function pieces()
+    {
+        return $this->belongsToMany(Piece::class, 'builds_pieces')->withPivot('quantity');
+    }
 }
