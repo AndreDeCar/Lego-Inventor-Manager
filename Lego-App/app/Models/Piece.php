@@ -11,7 +11,7 @@ class Piece extends Model
 
     protected $throwValidationExceptions = true;
 
-    protected $fillable = ['number', 'color', 'name', 'quantity', 'image_url'];
+    protected $fillable = ['number', 'color', 'name', 'quantity', 'image_url', 'box_id'];
 
     protected $rules = [
             'number' => 'required|integer',
@@ -19,5 +19,11 @@ class Piece extends Model
             'name' => 'required|string|max:100',
             'quantity' => 'required|integer',
             'image_url' => 'required|string|max:500|unique:pieces,image_url',
+            'box_id' => 'required|integer|exists:boxes,id',
         ];
+
+    public function box() 
+    {
+        return $this->belongsTo(Box::class);
+    }
 }

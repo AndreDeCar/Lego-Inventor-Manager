@@ -23,4 +23,9 @@ class Box extends Model
     {
         return $this->belongsTo(Cupboard::class);
     }
+
+    public function pieces()
+    {
+        return $this->hasMany(Piece::class);
+    }
 }

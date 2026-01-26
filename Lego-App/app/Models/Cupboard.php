@@ -22,4 +22,9 @@ class Cupboard extends Model
     {
         return $this->hasMany(Box::class);
     }
+
+    public function classroom()
+    {
+        return $this->belongsTo(Classroom::class);
+    }
 }
