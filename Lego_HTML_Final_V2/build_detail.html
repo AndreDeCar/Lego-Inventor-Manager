@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail du Kit</title>
+ <link rel="stylesheet" href="style.menu.css">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="block">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    
+    <!-- Utilisation d'icônes SVG depuis ton dossier local -->
+    <a href="Kits.html">
+        <img src="icons/kit-icon.svg" alt="Kits icon" class="menu-icon">
+        Kits
+    </a>
+
+    <a href="Build.html" class="active">
+        <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+</div>
+
+    <div class="main-content">
+         <!-- Kit Detail Page -->
+        <div id="page-kit-detail" class="page hidden">
+            <div class="kit-header">
+                <div class="kit-header-content">
+                    <h2>Avion robot</h2>
+                    <p>Nom du Fichier: Etape Building_Booklet_ALI2981-1</p>
+                    <p>Description: Grande aviation de recherche et clémente</p>
+                </div>
+                <div class="kit-thumbnail"></div>
+            </div>
+
+            <div class="section-title">Liste de pièces</div>
+
+            <div class="pieces-table-container">
+                <table class="pieces-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Nom de Pièce</th>
+                            <th>N°Pièce</th>
+                            <th>Quantité</th>
+                            <th>N°Boîte</th>
+                            <th>N°Armoire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Plaque 1x1 avec Clip</td>
+                            <td>6321</td>
+                            <td>15</td>
+                            <td>AC-12</td>
+                            <td>AC-122</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Brick 2x4</td>
+                            <td>3351</td>
+                            <td>8</td>
+                            <td>AC-34</td>
+                            <td>AC-340</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Plaque 1x1 avec Clip</td>
+                            <td>6321</td>
+                            <td>3</td>
+                            <td>AC-11</td>
+                            <td>AC-361</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Plaque 1x1 avec Clip</td>
+                            <td>6621</td>
+                            <td>4</td>
+                            <td>AC-56</td>
+                            <td>AC-566</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Tuile 1x1 Slide</td>
+                            <td>6181</td>
+                            <td>12</td>
+                            <td>AC-6</td>
+                            <td>AC-671</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td class="text-red">Tuile 2x2 Slide</td>
+                            <td>5556</td>
+                            <td>1</td>
+                            <td>AC-66</td>
+                            <td>AC-667</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Computer Pin</td>
+                            <td>8142</td>
+                            <td>3</td>
+                            <td>AC-33</td>
+                            <td>AC-333</td>
+                        </tr>
+                        <tr onclick="window.location.href='piece_detail.html'">
+                            <td><div class="table-image"></div></td>
+                            <td>Plaque 1x1 avec Clip</td>
+                            <td>3322</td>
+                            <td>5</td>
+                            <td>AC-12</td>
+                            <td>AC-121</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <button class="btn btn-pdf btn-primary" onclick="alert('Génération du PDF...')">Générer un PDF</button>
+    </div>
+</body>
+</html>

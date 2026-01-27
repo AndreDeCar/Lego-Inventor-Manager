@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détail de Pièce</title>
+ <link rel="stylesheet" href="style.menu.css">
+ <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="block">
+        <img src="images\logo-lego-final.png" alt="logo">
+    </div>
+    <!-- Utilisation d'icônes SVG depuis ton dossier local -->
+    <a href="Kits.html">
+        <img src="icons/kit-icon.svg" alt="Kits icon" class="menu-icon">
+        Kits
+    </a>
+
+    <a href="Build.html" class="active">
+        <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+</div>
+
+    <div class="main-content">
+<div id="page-piece-detail" class="page hidden">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h1 style="font-size: 24px;">Détails de Pièce</h1>
+                <div class="header-actions">
+                    <button class="icon-btn" onclick="showPage('kits')">↩</button>
+                    <button class="icon-btn" onclick="alert('Supprimer')">🗑</button>
+                </div>
+            </div>
+
+            <div class="piece-details">
+                <div class="piece-main">
+                    <div class="piece-image"></div>
+                    <div class="piece-info">
+                        <div class="info-row">
+                            <span class="info-label">Nom:</span> Brique standard 2x4
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">3001</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">ID/Numéro de Pièce:</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="info-label">Couleur:</span> Rouge (Bright Red)
+                            <span class="color-swatch"></span>
+                        </div>
+                        <div class="quantity-box">
+                            <div class="quantity-label">Quantité Totale en Stock:</div>
+                            <div class="quantity-value">185</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="location-section">
+                    <div class="location-title">Localisation Precise</div>
+                    <div class="location-item">• Salle_Robotique » Armoire_A » Boîte_B25 (x75) (x75)</div>
+                    <div class="location-item">• Salle_Makar » Armoire_B » Boîte_B25 (x75) (x75)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

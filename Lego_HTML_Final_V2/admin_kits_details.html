@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO® Inventor Manager - Millennium Malicon</title>
+    <link rel="stylesheet" href="style.menu.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        .kit-header {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .kit-header-content h1 {
+            font-size: 24px;
+            margin-bottom: 8px;
+        }
+
+        .kit-header-content p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .kit-thumbnail {
+            width: 100px;
+            height: 80px;
+            background: white;
+            border: 2px solid white;
+            position: relative;
+        }
+
+        .kit-thumbnail::before,
+        .kit-thumbnail::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .kit-thumbnail::before {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .kit-thumbnail::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .section-title {
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        .btn-kit {
+            background-color: #89a684;
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+
+        .pieces-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .piece-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .piece-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border: 2px solid #333;
+            margin-bottom: 15px;
+            position: relative;
+            background: #f9f9f9;
+        }
+
+        .piece-image::before,
+        .piece-image::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .piece-image::before {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .piece-image::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .piece-info {
+            margin-bottom: 15px;
+        }
+
+        .piece-info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .piece-info-label {
+            font-weight: bold;
+            color: #666;
+        }
+
+        .piece-info-value {
+            color: #333;
+        }
+
+        .piece-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-delete {
+            flex: 1;
+            padding: 10px;
+            background-color: #c85450;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .btn-localiser:hover {
+            background-color: #b34440;
+        }
+
+        .btn-modify {
+            flex: 1;
+            padding: 10px;
+            background-color: #5b8db8;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .btn-detail:hover {
+            background-color: #4a7a9f;
+        }
+
+        .color-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: #e0e0e0;
+            border-radius: 3px;
+            font-size: 12px;
+        }
+                .sidebar a.active {
+            background-color: #8b9a84;
+        }
+                        /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    <a href="admin_kits.html" class="active">
+               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+        Kits
+    </a>
+    <a href="admin-build.html">
+               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+    <a href="storage.html">
+               <img src="icons/storage-icon.svg" alt="Build icon" class="menu-icon">
+        Stockage
+    </a>
+    <a href="storage_boxes.html">
+               <img src="icons/boxes-icon.svg" alt="Build icon" class="menu-icon">
+        Boites
+    </a>
+    <a href="storage_cupboard.html">
+               <img src="icons/cupboard-icon.svg" alt="Build icon" class="menu-icon">
+        Armoires
+    </a>
+    <a href="storage_location.html">
+               <img src="icons/location-icon.svg" alt="Build icon" class="menu-icon">
+        Localisation
+    </a>
+<a href="login.html" class="menu-item logout" onclick="sessionStorage.clear()">
+    <img src="icons/logout-icon.svg" alt="Logout" class="menu-icon">
+    Logout
+</a>
+</div>
+
+<div class="main-content">
+    <!-- Search Bar -->
+    <div class="search-container">
+        <span></span>
+        <input type="text" class="search-input" placeholder="Que cherchez-vous ?">
+        <button class="btn-search">Rechercher</button>
+    </div>
+
+    <!-- Kit Header -->
+    <div class="kit-header">
+        <div class="kit-header-content">
+            <h1>Millenium Malicon</h1>
+            <p>Kit #7519042</p>
+        </div>
+        <div class="kit-thumbnail"></div>
+    </div>
+
+    <!-- Section Title -->
+    <div class="section-title">Liste de pièces</div>
+    <button class="btn-kit" onclick="window.location.href='admin_kits_add_piece.html'">Ajouter une pièce</button>
+
+    <!-- Pieces Grid -->
+    <div class="pieces-grid">
+        <!-- Piece 1 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">213</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">1</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Blanc</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">23</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 2 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">400</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">2</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Violet</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">12</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 3 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">25</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">3</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Bleu</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">19</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 4 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">511</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">4</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Blanc</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">8</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 5 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">12</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">5</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="piece-info-value">Rouge</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">55</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 6 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">22</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">6</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Bleu</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">8</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Localiser</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 7 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">44</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">7</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Blanc</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">6</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 8 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">66</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">8</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Rouge</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">99</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+
+        <!-- Piece 9 -->
+        <div class="piece-card">
+            <div class="piece-image"></div>
+            <div class="piece-info">
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Nom</span>
+                    <span class="piece-info-value">Ind_option</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Ref_option</span>
+                    <span class="piece-info-value">55</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Numéro</span>
+                    <span class="piece-info-value">9</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Couleur</span>
+                    <span class="color-badge">Bleu</span>
+                </div>
+                <div class="piece-info-row">
+                    <span class="piece-info-label">Quantité</span>
+                    <span class="piece-info-value">33</span>
+                </div>
+            </div>
+            <div class="piece-actions">
+                <button class="btn-delete">Supprimer</button>
+                <button class="btn-modify" onclick="window.location.href='admin_modify_pieces.html'">Modifier</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

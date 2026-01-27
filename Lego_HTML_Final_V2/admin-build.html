@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO® Inventor Manager - Kits Admin</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #5b6e6b;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 200px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #b3a18e;
+        }
+
+        .sidebar a.active {
+            background-color: #8b9a84;
+        }
+
+        /* Zone principale */
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        /* Barre de recherche */
+        .search-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        /* Titre */
+        .section-title {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-bottom: 30px;
+            font-size: 18px;
+        }
+
+        /* Bouton ajouter */
+        .btn-add {
+            margin-bottom: 30px;
+            padding: 10px 20px;
+            background-color: #89a684;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn-add:hover {
+            background-color: #78957a;
+        }
+
+        /* Grille */
+        .kits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        /* Carte */
+        .kit-card {
+            background-color: white;
+            border-radius: 4px;
+            padding: 20px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+        }
+
+        .kit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* Image fake */
+        .kit-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border: 2px solid #333;
+            margin-bottom: 15px;
+            position: relative;
+            background: #f9f9f9;
+        }
+
+        .kit-image::before,
+        .kit-image::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .kit-image::before {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .kit-image::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        /* Footer */
+        .kit-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .kit-name {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Bouton supprimer */
+        .btn-delete {
+            padding: 5px 12px;
+            font-size: 11px;
+            background-color: #c85450;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-delete:hover {
+            background-color: #b34440;
+        }
+
+        /* Empêcher la propagation du clic sur le bouton supprimer */
+        .btn-delete:active {
+            position: relative;
+            z-index: 10;
+        }
+                /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+
+                /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    <a href="admin_kits.html" >
+               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+        Kits
+    </a>
+    <a href="admin-build.html" class="active">
+               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+    <a href="storage.html">
+               <img src="icons/storage-icon.svg" alt="Build icon" class="menu-icon">
+        Stockage
+    </a>
+    <a href="storage_boxes.html">
+               <img src="icons/boxes-icon.svg" alt="Build icon" class="menu-icon">
+        Boites
+    </a>
+    <a href="storage_cupboard.html">
+               <img src="icons/cupboard-icon.svg" alt="Build icon" class="menu-icon">
+        Armoires
+    </a>
+    <a href="storage_location.html">
+               <img src="icons/location-icon.svg" alt="Build icon" class="menu-icon">
+        Localisation
+    </a>
+<a href="login.html" class="menu-item logout" onclick="sessionStorage.clear()">
+    <img src="icons/logout-icon.svg" alt="Logout" class="menu-icon">
+    Logout
+</a>
+
+</div>
+
+<!-- Contenu principal -->
+<div class="main-content">
+
+    <!-- Barre de recherche -->
+    <div class="search-container">
+        <span></span>
+        <input type="text" class="search-input" placeholder="Que cherchez-vous ?">
+        <button class="btn-search">Rechercher</button>
+    </div>
+
+    <!-- Titre -->
+    <div class="section-title">Liste de kits</div>
+
+    <!-- Bouton ajouter -->
+    <button class="btn-add" onclick="window.location.href='admin-add-kit.html'">Ajouter un kit</button>
+
+    <!-- Grille -->
+    <div class="kits-grid">
+        <!-- Kit 1 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Millenium Falcon #75192</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Millenium Falcon')">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Kit 2 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Avion robotisé 53863</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Avion robotisé')">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Kit 3 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Petite Apollo Saturn V</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Apollo Saturn V')">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Kit 4 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Château de Poudlard #71043</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Château de Poudlard')">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Kit 5 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Dom Vacation #8757KN2</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Dom Vacation')">Supprimer</button>
+            </div>
+        </div>
+
+        <!-- Kit 6 -->
+        <div class="kit-card" onclick="window.location.href='admin_build_list_piece.html'">
+            <div class="kit-image"></div>
+            <div class="kit-footer">
+                <span class="kit-name">Petite Apollo Telcon V</span>
+                <button class="btn-delete" onclick="event.stopPropagation(); deleteKit('Apollo Telcon')">Supprimer</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

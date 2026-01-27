@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>LEGO® Inventor Manager - Kits</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #5b6e6b;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .block {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .block img {
+            width: 200px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #b3a18e;
+        }
+
+        .sidebar a.active {
+            background-color: #8b9a84;
+        }
+
+        /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        .section-title {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        .kits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .kit-card {
+            background: white;
+            padding: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .kit-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .kit-image {
+            width: 100%;
+            aspect-ratio: 4/3;
+            border: 2px solid #333;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .kit-image::before,
+        .kit-image::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .kit-image::before {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .kit-image::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .kit-name {
+            font-weight: bold;
+            margin-bottom: 5px;
+            font-size: 13px;
+        }
+
+        .kit-code {
+            color: #666;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="block">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    
+    <!-- Utilisation d'icônes SVG depuis ton dossier local -->
+    <a href="Kits.html">
+        <img src="icons/kit-icon.svg" alt="Kits icon" class="menu-icon">
+        Kits
+    </a>
+
+    <a href="Build.html" class="active">
+        <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+</div>
+
+<div class="main-content">
+    <!-- Search Bar -->
+    <div class="search-container">
+        <span></span>
+        <input type="text" class="search-input" placeholder="Que cherchez-vous ?">
+        <button class="btn-search">Rechercher</button>
+    </div>
+
+    <div class="section-title">Liste de kits</div>
+
+    <div class="kits-grid">
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Vaisseau Maison (Kit 8757K2)</div>
+            <div class="kit-code">7851 Pieces</div>
+        </div>
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Avion robotisé 53863</div>
+            <div class="kit-code">7650 Pieces</div>
+        </div>
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Petite Apollo 3mm Y (Kit KE376)</div>
+            <div class="kit-code">1967 Pieces</div>
+        </div>
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Chateau de Poudlard (Kit 75419)</div>
+            <div class="kit-code">7628 Pieces</div>
+        </div>
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Dom Vacation (Kit 8757KN2)</div>
+            <div class="kit-code">7851 Pieces</div>
+        </div>
+        <div class="kit-card" onclick="window.location.href='kits_detail.html'">
+            <div class="kit-image"></div>
+            <div class="kit-name">Petite Apollo Telcon V (Kit776)</div>
+            <div class="kit-code">7967 Pieces</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

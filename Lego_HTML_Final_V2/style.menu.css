@@ -1,0 +1,210 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+}
+
+.sidebar {
+    width: 220px;
+    height: 100vh;
+    background-color: #5b6e6b;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+}
+
+.sidebar .block {
+    text-align: center;
+    color: white;
+    margin-bottom: 30px;
+}
+
+.sidebar img {
+    width: 200px;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px 20px;
+}
+
+.sidebar a:hover {
+    background-color: #b3a18e;
+}
+ * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #5b6e6b;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 200px;
+        }
+
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: background 0.3s;
+            font-size: 14px;
+        }
+
+        .sidebar a:hover {
+            background-color: #b3a18e;
+        }
+
+        .sidebar a.active {
+            background-color: #8b9a84;
+        }
+
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        .page-header {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        /* Table Container */
+        .table-container {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .stockage-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .stockage-table thead {
+            background-color: #f5f5f5;
+        }
+
+        .stockage-table th {
+            padding: 15px 20px;
+            text-align: left;
+            font-weight: bold;
+            font-size: 13px;
+            border-bottom: 2px solid #ddd;
+            color: #333;
+        }
+
+        .stockage-table td {
+            padding: 12px 20px;
+            border-bottom: 1px solid #eee;
+            font-size: 13px;
+            color: #333;
+        }
+
+        .stockage-table tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        .stockage-table tbody tr:hover {
+            background-color: #f9f9f9;
+        }
+
+        /* Scrollbar styling */
+        .table-container {
+            max-height: calc(100vh - 250px);
+            overflow-y: auto;
+        }
+
+        .table-container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 6px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+
+        /* Alternating row colors for better readability */
+        .stockage-table tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+                /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }

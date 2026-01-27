@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Kits</title>
+    <link rel="stylesheet" href="style.menu.css">
+    <link rel="stylesheet" href="admin-add-kit.css">
+</head>
+
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    <a href="admin_kits.html" class="active">
+               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+        Kits
+    </a>
+    <a href="admin-build.html" >
+               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+    <a href="storage.html">
+               <img src="icons/storage-icon.svg" alt="Build icon" class="menu-icon">
+        Stockage
+    </a>
+    <a href="storage_boxes.html">
+               <img src="icons/boxes-icon.svg" alt="Build icon" class="menu-icon">
+        Boites
+    </a>
+    <a href="storage_cupboard.html">
+               <img src="icons/cupboard-icon.svg" alt="Build icon" class="menu-icon">
+        Armoires
+    </a>
+    <a href="storage_location.html">
+               <img src="icons/location-icon.svg" alt="Build icon" class="menu-icon">
+        Localisation
+    </a>
+<a href="login.html" class="menu-item logout" onclick="sessionStorage.clear()">
+    <img src="icons/logout-icon.svg" alt="Logout" class="menu-icon">
+    Logout
+</a>
+</div>
+
+<!-- Contenu principal -->
+<div class="main">
+
+    <!-- Barre de recherche -->
+    <div class="topbar">
+        <div class="search-box">
+            <span class="search-icon"></span>
+            <input type="text" placeholder="Que cherchez-vous ?">
+        </div>
+        <button class="search-btn">Rechercher</button>
+    </div>
+
+    <!-- Titre -->
+    <div class="add-kit-header">
+        Ajouter un kit
+    </div>
+
+    <!-- Formulaire -->
+    <div class="kit-container">
+        <input type="text" placeholder="Numéro du kit LEGO">
+        <button class="save-btn">Enregistrer</button>
+    </div>
+
+</div>
+
+</body>
+</html>

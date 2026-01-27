@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO® Inventor Manager - modifier boite</title>
+    <style>
+
+        .body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #5b6e6b;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 200px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #b3a18e;
+        }
+
+        .sidebar a.active {
+            background-color: #8b9a84;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        .page-header {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 20px;
+            font-size: 18px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+
+        .btn-details:hover {
+            background-color: #423837;
+        }
+        .page-header form input {
+        padding: 22px;
+        border-radius: 10px;
+        border: none;
+        background-color: #d7cfc8;
+        font-size: 18px;
+        }
+        .box {
+            margin-left: 220px;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .title {
+            background-color: #4e5d5b;
+            color: white;
+            width: 520px;
+            text-align: center;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            font-size: 28px;
+        }
+
+        form {
+            width: 520px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        input {
+            padding: 22px;
+            border-radius: 10px;
+            border: none;
+            background-color: #d7cfc8;
+            font-size: 18px;
+        }
+
+        button {
+            padding: 22px;
+            background-color: #d7cfc8;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        button:hover {
+            background-color: #b3a18e;
+        }
+                        /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+
+    </style>
+</head>
+<body>
+    
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    <a href="admin_kits.html" class="active">
+               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+        Kits
+    </a>
+    <a href="admin-build.html" >
+               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+    <a href="storage.html">
+               <img src="icons/storage-icon.svg" alt="Build icon" class="menu-icon">
+        Stockage
+    </a>
+    <a href="storage_boxes.html">
+               <img src="icons/boxes-icon.svg" alt="Build icon" class="menu-icon">
+        Boites
+    </a>
+    <a href="storage_cupboard.html">
+               <img src="icons/cupboard-icon.svg" alt="Build icon" class="menu-icon">
+        Armoires
+    </a>
+    <a href="storage_location.html">
+               <img src="icons/location-icon.svg" alt="Build icon" class="menu-icon">
+        Localisation
+    </a>
+<a href="login.html" class="menu-item logout" onclick="sessionStorage.clear()">
+    <img src="icons/logout-icon.svg" alt="Logout" class="menu-icon">
+    Logout
+</a>
+</div>
+        
+    <!-- Main Content -->
+    <div class="main-content">
+    <!-- Search Bar -->
+    <div class="search-container">
+        <span></span>
+        <input type="text" class="search-input" placeholder="Que cherchez-vous ?">
+        <button class="btn-search">Rechercher</button>
+    </div>
+
+    <!-- Page Header -->
+    <div class="page-header">Ajouter une pièces</div>
+    <form class="">
+        <input type="text" name="num_piece" placeholder="Numéro de la pièce">
+
+        <input type="text" name="coul_piece" placeholder="Couleur de la pièce">
+
+        <input type="text" name="nam_piece" placeholder="Nom de la pièce">
+
+        <input type="text" name="nombr_piece" placeholder="Nombre de pièces">
+
+        <input type="text" name="link_image" placeholder="Lien de l'image">
+
+        <label for="boite">Numéro de boîte</label>
+
+    <select id="boite" name="boite" class="select-boite">
+        <option value="" disabled selected>Choisir une boîte</option>
+        <option value="A12">A12</option>
+        <option value="A23">A23</option>
+        <option value="B01">B01</option>
+    </select>
+
+        <button type="submit">Enregistrer</button>
+    </form>
+
+
+
+</body>
+
+<html

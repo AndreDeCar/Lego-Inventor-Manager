@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGO® Inventor Manager - Avion robot</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 220px;
+            height: 100vh;
+            background-color: #5b6e6b;
+            position: fixed;
+            left: 0;
+            top: 0;
+            padding-top: 20px;
+        }
+
+        .logo-container {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .logo-container img {
+            width: 200px;
+        }
+
+        .sidebar a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            padding: 12px 20px;
+            transition: background 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #b3a18e;
+        }
+
+        .sidebar a.active {
+            background-color: #8b9a84;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-left: 220px;
+            padding: 40px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+
+        .search-container {
+            margin-bottom: 30px;
+            display: flex;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .search-input {
+            flex: 1;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background: white;
+            font-size: 14px;
+        }
+
+        .btn-search {
+            padding: 12px 30px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .btn-search:hover {
+            background-color: #b3a18e;
+        }
+
+        .kit-header {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 30px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .kit-header-content h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        .kit-header-content p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin-bottom: 8px;
+        }
+
+        .kit-thumbnail {
+            width: 120px;
+            height: 90px;
+            background: white;
+            border: 2px solid white;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .kit-thumbnail::before,
+        .kit-thumbnail::after {
+            content: '';
+            position: absolute;
+            background: #333;
+        }
+
+        .kit-thumbnail::before {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .kit-thumbnail::after {
+            width: 2px;
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .section-title {
+            background-color: #4a5f5f;
+            color: white;
+            padding: 15px 20px;
+            font-size: 16px;
+            border-radius: 4px;
+            margin-bottom: 30px;
+        }
+
+        /* Table Container */
+        .table-container {
+            background: white;
+            border-radius: 4px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .pieces-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .pieces-table thead {
+            background-color: #f5f5f5;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .pieces-table th {
+            padding: 15px 12px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 12px;
+            border-bottom: 2px solid #ddd;
+            color: #333;
+        }
+
+        .pieces-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            font-size: 12px;
+            color: #333;
+            text-align: center;
+        }
+
+        .pieces-table tbody tr {
+            transition: background-color 0.2s;
+        }
+
+        .pieces-table tbody tr:hover {
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .pieces-table tbody tr:nth-child(even) {
+            background-color: #fafafa;
+        }
+
+        .table-image {
+            width: 60px;
+            height: 45px;
+            border: 2px solid #333;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        .table-image::before,
+        .table-image::after {
+            content: '';
+            position: absolute;
+            background: #333;
+            width: 1px;
+        }
+
+        .table-image::before {
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(45deg);
+        }
+
+        .table-image::after {
+            height: 100%;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+        }
+
+        .action-cell {
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        /* Buttons Container */
+        .buttons-container {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn-pdf {
+            padding: 15px 40px;
+            background-color: #c4b5a0;
+            color: #333;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-pdf:hover {
+            background-color: #b3a18e;
+        }
+
+        .btn-add {
+            padding: 15px 40px;
+            background-color: #89a684;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .btn-add:hover {
+            background-color: #78957a;
+        }
+
+        /* Scrollbar styling */
+        .table-container::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        .table-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        .table-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 6px;
+        }
+
+        .table-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+                        /* Style pour les icônes SVG */
+        .sidebar a .menu-icon {
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            filter: brightness(0) invert(1); /* Rend l'icône blanche */
+        }
+    </style>
+</head>
+<body>
+
+<!-- Sidebar -->
+<div class="sidebar">
+    <div class="logo-container">
+        <img src="images/logo-lego-final.png" alt="logo">
+    </div>
+    <a href="admin_kits.html" >
+               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+        Kits
+    </a>
+    <a href="admin-build.html" class="active">
+               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+        Build
+    </a>
+    <a href="storage.html">
+               <img src="icons/storage-icon.svg" alt="Build icon" class="menu-icon">
+        Stockage
+    </a>
+    <a href="storage_boxes.html">
+               <img src="icons/boxes-icon.svg" alt="Build icon" class="menu-icon">
+        Boites
+    </a>
+    <a href="storage_cupboard.html">
+               <img src="icons/cupboard-icon.svg" alt="Build icon" class="menu-icon">
+        Armoires
+    </a>
+    <a href="storage_location.html">
+               <img src="icons/location-icon.svg" alt="Build icon" class="menu-icon">
+        Localisation
+    </a>
+<a href="login.html" class="menu-item logout" onclick="sessionStorage.clear()">
+    <img src="icons/logout-icon.svg" alt="Logout" class="menu-icon">
+    Logout
+</a>
+</div>
+<!-- Main Content -->
+<div class="main-content">
+    <!-- Search Bar -->
+    <div class="search-container">
+        <span></span>
+        <input type="text" class="search-input" placeholder="Que cherchez-vous ?" onkeyup="filterTable()">
+        <button class="btn-search" onclick="filterTable()">Rechercher</button>
+    </div>
+
+    <!-- Kit Header -->
+    <div class="kit-header">
+        <div class="kit-header-content">
+            <h1>Avion robot</h1>
+            <p>Nom du Projet: Etude Robotics Analyzer At Disk-1</p>
+            <p>Description: Grande station de recherche et clémente</p>
+        </div>
+        <div class="kit-thumbnail"></div>
+    </div>
+
+    <!-- Section Title -->
+    <div class="section-title">Liste de pièces</div>
+
+    <!-- Table Container -->
+    <div class="table-container">
+        <table class="pieces-table" id="piecesTable">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Image</th>
+                    <th>Nom de Pièce</th>
+                    <th>N°Pièce</th>
+                    <th>Quantité</th>
+                    <th>N°Boîte</th>
+                    <th>N°Armoire</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Plaque kit misc Clip</td>
+                    <td>6321</td>
+                    <td>15</td>
+                    <td>AC16</td>
+                    <td>AC 161</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Brace Sut</td>
+                    <td>6550</td>
+                    <td>8</td>
+                    <td>AC34</td>
+                    <td>AC 340</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Plaque kit misc Clip</td>
+                    <td>6321</td>
+                    <td>3</td>
+                    <td>AC31</td>
+                    <td>AC 361</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Plaque kit misc Clip</td>
+                    <td>6621</td>
+                    <td>4</td>
+                    <td>AC56</td>
+                    <td>AC 566</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Tuile kit Slite</td>
+                    <td>5181</td>
+                    <td>12</td>
+                    <td>AC6</td>
+                    <td>AC 671</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Tuile 2x2 Slite</td>
+                    <td>5556</td>
+                    <td>1</td>
+                    <td>AC66</td>
+                    <td>AC 667</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Computer Pin</td>
+                    <td>8142</td>
+                    <td>3</td>
+                    <td>AC33</td>
+                    <td>AC 333</td>
+                </tr>
+                <tr onclick="window.location.href='piece_detail.html'">
+                    <td class="action-cell">Modifier<br>Supprimer</td>
+                    <td><div class="table-image"></div></td>
+                    <td>Plaque kit misc Clip</td>
+                    <td>3322</td>
+                    <td>5</td>
+                    <td>AC12</td>
+                    <td>AC 121</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Buttons -->
+    <div class="buttons-container">
+        <button class="btn-pdf" onclick="alert('Génération du PDF...')">Générer un PDF</button>
+        <button class="btn-add" onclick="window.location.href='admin_kits_add_piece.html'">Ajouter une pièce</button>
+    </div>
+</div>
+
+</body>
+</html>
