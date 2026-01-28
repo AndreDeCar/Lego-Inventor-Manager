@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGO® Inventor Manager - Kits</title>
-    <link rel="stylesheet" href="styles.css">
+    @vite (['resources/css/style.css', 'resources/js/app.js'])
 </head>
 <body>
     
@@ -13,11 +13,11 @@
     <div class="logo-container">
         <img src="images/logo-lego-final.png" alt="logo">
     </div>
-    <a href="kits.html" class="active">
+    <a href="/kits" class="active">
                <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
         Kits
     </a>
-    <a href="build.html">
+    <a href="/builds">
                <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
         Build
     </a>
