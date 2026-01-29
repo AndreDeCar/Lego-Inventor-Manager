@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Kit;
 use Illuminate\Http\Request;
 
-class KitController
+class KitController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Models\Cupboard;
 use Illuminate\Http\Request;
 
-class CupboardController
+class CupboardController extends Controller
 {
     /**
      * Display a listing of the resource.
