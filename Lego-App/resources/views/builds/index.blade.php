@@ -10,7 +10,6 @@
     @foreach ($builds as $build)
         <a href="{{ route('builds.show', $build) }}" class="kit-card">
 
-            {{-- Image du build --}}
             <div class="kit-image">
                 @if($build->image)
                     <img src="{{ asset('images/' . $build->image) }}" alt="Build {{ $build->number }}">
@@ -19,7 +18,6 @@
                 @endif
             </div>
 
-            {{-- Nom / numéro du build --}}
             <div class="kit-name">
                 {{ $build->name }}
             </div>
