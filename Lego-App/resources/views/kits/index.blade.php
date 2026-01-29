@@ -11,10 +11,10 @@
         <a href="{{ route('kits.show', $kit) }}" class="kit-card">
 
             <div class="kit-image">
-                @if($kit->image)
-                    <img src="{{ asset('images/kits/' . $kit->image) }}" alt="Kit {{ $kit->number }}">
+                @if($kit->image_url)
+                    <img src="{{ $kit->image_url }}" alt="Kit {{ $kit->number }}">
                 @else
-                    <img src="{{ asset('images/default.png') }}" alt="Kit par défaut">
+                    <img src="{{ asset('images/lego.png') }}" alt="Kit par défaut">
                 @endif
             </div>
 
