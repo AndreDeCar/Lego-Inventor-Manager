@@ -16,7 +16,7 @@
                 @if($kit->image)
                     <img src="{{ asset('images/kits/' . $kit->image) }}" alt="Kit {{ $kit->number }}">
                 @else
-                    <img src="{{ asset('images/kits/default.png') }}" alt="Kit par défaut">
+                    <img src="{{ asset('images/default.png') }}" alt="Kit par défaut">
                 @endif
             </div>
 
