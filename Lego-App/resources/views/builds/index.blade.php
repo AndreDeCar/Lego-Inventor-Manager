@@ -8,8 +8,7 @@
 <!-- Grid Container -->
     <div class="kits-grid">
     @foreach ($builds as $build)
-        <div class="kit-card"
-             onclick="window.location.href='{{ route('builds.show', $build) }}'">
+        <a href="{{ route('builds.show', $build) }}" class="kit-card">
 
             {{-- Image du kit --}}
             <div class="kit-image">
@@ -25,8 +24,7 @@
                 {{ $build->name }}
             </div>
 
-
-       </div>
+        </a>
     @endforeach
 </div>
 
