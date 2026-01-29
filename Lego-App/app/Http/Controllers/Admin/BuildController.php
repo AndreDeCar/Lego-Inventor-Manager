@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Build;
 use Illuminate\Http\Request;
 
 class BuildController

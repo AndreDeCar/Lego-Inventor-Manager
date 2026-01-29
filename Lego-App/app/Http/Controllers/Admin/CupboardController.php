@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Cupboard;
 use Illuminate\Http\Request;
 
 class CupboardController

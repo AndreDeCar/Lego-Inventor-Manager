@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Box;
 use Illuminate\Http\Request;
 
 class BoxController

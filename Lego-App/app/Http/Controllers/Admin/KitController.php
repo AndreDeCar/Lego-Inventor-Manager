@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Kit;
 use Illuminate\Http\Request;
 
 class KitController
