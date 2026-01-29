@@ -22,7 +22,7 @@
 
             {{-- Nom / numéro du kit --}}
             <div class="kit-name">
-                {{ $kit->name ?? 'Kit ' . $kit->number }}
+                {{ $kit->name ?? 'Lego ' . $kit->number }}
             </div>
 
 
