@@ -11,14 +11,16 @@
 <!-- Sidebar -->
 <div class="sidebar">
     <div class="logo-container">
-        <img src="images/logo-lego-final.png" alt="logo">
+        <img src="{{ asset('images/logo-lego-final.png') }}" alt="logo">
     </div>
-    <a href="/kits" class="active">
-               <img src="icons/kit-icon.svg" alt="Build icon" class="menu-icon">
+
+    <a href="/kits" class="{{ request()->routeIs('kits.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/kit-icon.svg') }}" alt="Kit icon" class="menu-icon">
         Kits
     </a>
-    <a href="/builds">
-               <img src="icons/build-icon.svg" alt="Build icon" class="menu-icon">
+
+    <a href="/builds" class="{{ request()->routeIs('builds.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
         Build
     </a>
 </div>
