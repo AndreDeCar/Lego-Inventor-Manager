@@ -108,7 +108,7 @@ INSERT INTO kits (number)
 VALUES (51515);
 
 INSERT INTO builds (name, image_url)
-VALUES ('Charlie', 'https://example.com/charlie.png');
+VALUES ('Charlie', 'https://www.lego.com/cdn/cs/set/assets/bltc4a9545c4162665a/03-Adults_Welcome-Article_Fizzy-_ArticleAsset.png?fit=crop&quality=80&width=700&dpr=1');
 
 INSERT INTO pieces (number, color, name, quantity, image_url, box_id)
 VALUES
@@ -119,7 +119,8 @@ VALUES
     (47598, 'black', 'Color Sensor', 1, 'https://example.com/color_sensor.png', 1),
     (32054, 'light bluish gray', 'Technic Pin 3L', 50, 'https://example.com/pin3l.png', 1),
     (6558, 'black', 'Technic Axle 3L', 30, 'https://example.com/axle3l.png', 1),
-    (32523, 'light bluish gray', 'Technic Beam 3L', 20, 'https://example.com/beam3l.png', 1);
+    (32523, 'light bluish gray', 'Technic Beam 3L', 20, 'https://super-briques.fr/7204-home_default/plate-1x2-piece-lego-3023.jpg', 1),
+    (3555, 'yellow', 'Brick 2L', 20, 'https://super-briques.fr/6412-medium_default/brique-1x4-piece-lego-3010.jpg', 1);
 
 INSERT INTO kits_pieces (kit_id, piece_id)
 SELECT 1, id FROM pieces;
