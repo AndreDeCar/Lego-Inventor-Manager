@@ -26,3 +26,9 @@ Route::prefix('admin')->name('admin.')->group(function () {
     Route::resource('cupboards', AdminCupboardController::class);
     Route::resource('pieces', AdminPieceController::class);
 });
+
+Route::get('admin/builds/{build}/add-piece', [AdminBuildController::class, 'showAddPieceForm'])
+    ->name('admin.builds.showAddPieceForm');
+
+Route::post('admin/builds/{build}/pieces', [AdminBuildController::class, 'addPiece'])
+    ->name('admin.builds.addPiece');

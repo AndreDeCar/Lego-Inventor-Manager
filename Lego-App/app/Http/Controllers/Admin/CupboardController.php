@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Cupboard;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CupboardController extends Controller

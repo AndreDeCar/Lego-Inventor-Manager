@@ -318,6 +318,36 @@ body {
     transform: translateX(-50%) rotate(-45deg);
 }
 
+.kit-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.kit-container input {
+    width: 300px;
+    padding: 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #d7cfc8;
+    text-align: center;
+    font-size: 14px;
+}
+
+.filter-button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #89a684;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    margin-bottom: 30px;
+}
+
 .pieces-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -432,6 +462,78 @@ body {
     margin: 0 auto;
 }
 
+.save-btn {
+    width: 300px;
+    padding: 14px;
+    background-color: #4e5d5b;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.save-btn:hover {
+    background-color: #3f4c4a;
+}
+
+.btn-modify {
+    flex: 1;               
+    padding: 8px 0;        
+    background-color: #5b8db8;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s;
+    margin-right: 10px;    
+}
+
+.btn-delete {
+    flex: 1;         
+    padding: 8px 0;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s;
+}
+
+.btn-delete:hover {
+    background-color: #b34440;
+}
+
+.btn-delete:active {
+    position: relative;
+    z-index: 10;
+}
+
+.action-cell {
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+.btn-pdf {
+    padding: 15px 40px;
+    background-color: #c4b5a0;
+    color: #333;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.btn-pdf:hover {
+    background-color: #b3a18e;
+}
 
 h2, p {
     display: inline;

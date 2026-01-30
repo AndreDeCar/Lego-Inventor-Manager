@@ -15,6 +15,8 @@ class Kit extends Model
     // Attributs pouvant être assignés
     protected $fillable = ['number'];
 
+    public $timestamps = false;
+
     // Données de validation alignées avec la base de données
     protected $rules = [
             'number' => 'required|integer|unique:kits,number',

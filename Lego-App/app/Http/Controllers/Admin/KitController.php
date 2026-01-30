@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Kit;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class KitController extends Controller
@@ -12,7 +13,7 @@ class KitController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.kits.index', ['kits' => Kit::all()]);
     }
 
     /**
@@ -20,7 +21,7 @@ class KitController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.kits.create');
     }
 
     /**
@@ -28,15 +29,17 @@ class KitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Kit::create($request->all());
+
+        return redirect()->route('admin.kits.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Kit $kit)
     {
-        //
+        return view('admin.kits.show', ['kit' => $kit]);
     }
 
     /**
@@ -44,7 +47,7 @@ class KitController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        
     }
 
     /**
@@ -58,8 +61,12 @@ class KitController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Kit $kit)
     {
-        //
+        $kit->pieces()->detach();
+
+        $kit->delete();
+
+        return redirect()->route('admin.kits.index');
     }
 }

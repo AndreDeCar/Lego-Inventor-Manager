@@ -12,6 +12,8 @@ class Box extends Model
 
     protected $throwValidationExceptions = true;
 
+    public $timestamps = false;
+
     // Attributs pouvant être assignés
     protected $fillable = ['number', 'size', 'cupboard_id'];
 

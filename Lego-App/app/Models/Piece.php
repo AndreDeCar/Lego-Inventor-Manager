@@ -12,6 +12,8 @@ class Piece extends Model
 
     protected $throwValidationExceptions = true;
 
+    public $timestamps = false;
+
     // Attributs pouvant être assignés
     protected $fillable = ['number', 'color', 'name', 'quantity', 'image_url', 'box_id'];
 

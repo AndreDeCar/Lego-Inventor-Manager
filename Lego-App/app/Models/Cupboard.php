@@ -12,6 +12,8 @@ class Cupboard extends Model
 
     protected $throwValidationExceptions = true;
 
+    public $timestamps = false;
+
     // Attributs pouvant être assignés
     protected $fillable = ['number', 'classroom_id'];
 

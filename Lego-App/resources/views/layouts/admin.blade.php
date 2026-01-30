@@ -14,33 +14,33 @@
         <img src="{{ asset('images/logo-lego-final.png') }}" alt="logo">
     </div>
 
-    <a href="/kits" class="{{ request()->routeIs('kits.*') ? 'active' : '' }}">
+    <a href="/admin/kits" class="{{ request()->routeIs('admin/kits.*') ? 'active' : '' }}">
                <img src="{{ asset('icons/kit-icon.svg') }}" alt="Kit icon" class="menu-icon">
         Kits
     </a>
 
-    <a href="/builds" class="{{ request()->routeIs('builds.*') ? 'active' : '' }}">
+    <a href="/admin/builds" class="{{ request()->routeIs('admin/builds.*') ? 'active' : '' }}">
                <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
         Build
     </a>
 
-    <a href="/builds" class="{{ request()->routeIs('storages.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
+    <a href="/admin/storages" class="{{ request()->routeIs('admin/storages.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/storage-icon.svg') }}" alt="Build icon" class="menu-icon">
         Stockage
     </a>
 
-    <a href="/builds" class="{{ request()->routeIs('boxes.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
+    <a href="/admin/boxes" class="{{ request()->routeIs('admin/boxes.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/boxes-icon.svg') }}" alt="Build icon" class="menu-icon">
         Boites
     </a>
 
-    <a href="/builds" class="{{ request()->routeIs('cupboards.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
+    <a href="/admin/cupboards" class="{{ request()->routeIs('admin/cupboards.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/cupboard-icon.svg') }}" alt="Build icon" class="menu-icon">
         Armoires
     </a>
 
-    <a href="/builds" class="{{ request()->routeIs('classrooms.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/build-icon.svg') }}" alt="Build icon" class="menu-icon">
+    <a href="/admin/classrooms" class="{{ request()->routeIs('admin/classrooms.*') ? 'active' : '' }}">
+               <img src="{{ asset('icons/location-icon.svg') }}" alt="Build icon" class="menu-icon">
         Localisation
     </a>
 </div>
