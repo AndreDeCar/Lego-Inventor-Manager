@@ -25,22 +25,22 @@
     </a>
 
     <a href="/admin/storages" class="{{ request()->routeIs('admin/storages.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/storage-icon.svg') }}" alt="Build icon" class="menu-icon">
+               <img src="{{ asset('icons/storage-icon.svg') }}" alt="Storage icon" class="menu-icon">
         Stockage
     </a>
 
     <a href="/admin/boxes" class="{{ request()->routeIs('admin/boxes.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/boxes-icon.svg') }}" alt="Build icon" class="menu-icon">
+               <img src="{{ asset('icons/boxes-icon.svg') }}" alt="Boxes icon" class="menu-icon">
         Boites
     </a>
 
     <a href="/admin/cupboards" class="{{ request()->routeIs('admin/cupboards.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/cupboard-icon.svg') }}" alt="Build icon" class="menu-icon">
+               <img src="{{ asset('icons/cupboard-icon.svg') }}" alt="Cupboard icon" class="menu-icon">
         Armoires
     </a>
 
     <a href="/admin/classrooms" class="{{ request()->routeIs('admin/classrooms.*') ? 'active' : '' }}">
-               <img src="{{ asset('icons/location-icon.svg') }}" alt="Build icon" class="menu-icon">
+               <img src="{{ asset('icons/location-icon.svg') }}" alt="Location icon" class="menu-icon">
         Localisation
     </a>
 </div>
