@@ -108,6 +108,7 @@ class PieceController extends Controller
         $kits = $piece->kits;
 
         $piece->kits()->detach();
+        $piece->builds()->detach();
 
         $piece->delete();
 
