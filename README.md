@@ -54,6 +54,8 @@ To deploy the project on a server like **SwissCenter**, follow these steps:
 
 ## 1. Folder Structure
 
+```shell
+
 /laravel      # Where the laravel code belongs
     ├── app/
     ├── bootstrap/
@@ -67,6 +69,7 @@ To deploy the project on a server like **SwissCenter**, follow these steps:
     ├── js/
     ├── images/
     └── index.php
+```
 
 ## 2. Installation
 
@@ -142,3 +145,4 @@ project/
     └── console.php
 
 ```
+
