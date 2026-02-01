@@ -8,7 +8,7 @@
 <form action="{{ route('admin.boxes.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <div class="kit-container">
+    <div class="form-container">
         <input type="text" placeholder="Numéro de la boîte" name="number" required>
         <select name="size" placeholder="Taille de la boîte" required>
             <option value="" disabled selected>-- Sélectionnez une taille --</option>
@@ -16,7 +16,13 @@
             <option value="medium">Moyenne</option>
             <option value="big">Grande</option>
         </select>
-        <button class="save-btn" type="submit">Enregistrer</button>
+        <select name="cupboard_id" placeholder="Armoire" required>
+            <option value="" disabled selected>-- Sélectionnez une armoire --</option>
+            @foreach($cupboards as $cupboard)
+                <option value="{{ $cupboard->id }}">{{ $cupboard->number }}</option>
+            @endforeach
+        </select>
+        <button class="btn-save" type="submit">Enregistrer</button>
     </div>
 </form>
 @endsection
