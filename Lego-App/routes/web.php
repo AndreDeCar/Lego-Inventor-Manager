@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\BoxController as AdminBoxController;
 use App\Http\Controllers\Admin\ClassroomController as AdminClassroomController;
 use App\Http\Controllers\Admin\CupboardController as AdminCupboardController;
 use App\Http\Controllers\Admin\PieceController as AdminPieceController;
+use App\Http\Controllers\Admin\BuildPieceController as AdminBuildPieceController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -32,3 +33,6 @@ Route::get('admin/builds/{build}/add-piece', [AdminBuildController::class, 'show
 
 Route::post('admin/builds/{build}/pieces', [AdminBuildController::class, 'addPiece'])
     ->name('admin.builds.addPiece');
+
+Route::delete('admin/builds/{build}/pieces/{piece}', [AdminBuildPieceController::class, 'removePiece'])
+    ->name('admin.builds.pieces.removePiece');
