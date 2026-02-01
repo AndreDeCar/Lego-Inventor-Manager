@@ -24,7 +24,7 @@
                 <tr>
                     <td>
                         <div class="action-cell">
-                            <form action="{{ route('admin.pieces.destroy', $piece->id) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette pièce ?');">
+                            <form action="{{ route('admin.builds.pieces.removePiece', ['build' => $build->id, 'piece' => $piece->id]) }}" method="POST" onsubmit="return confirm('Êtes-vous sûr de vouloir retirer cette pièce ?');">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn-delete">
