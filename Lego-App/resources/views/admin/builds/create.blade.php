@@ -8,10 +8,10 @@
 <form action="{{ route('admin.builds.store') }}" method="POST" enctype="multipart/form-data">
     @csrf
 
-    <div class="kit-container">
+    <div class="form-container">
         <input type="text" placeholder="Nom du montage" name="name" required>
         <input type="text" placeholder="Lien de l'image" name="image_url" required>
-        <button class="save-btn" type="submit">Enregistrer</button>
+        <button class="btn-save" type="submit">Enregistrer</button>
     </div>
 </form>
 @endsection

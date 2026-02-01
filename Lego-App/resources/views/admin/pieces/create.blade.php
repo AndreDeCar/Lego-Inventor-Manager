@@ -9,7 +9,7 @@
     @csrf
     <input type="hidden" name="kit_id" value="{{ $kit->id }}">
 
-    <div class="kit-container space-y-4">
+    <div class="form-container">
 
         <!-- Numéro du kit -->
         <input 
@@ -85,7 +85,7 @@
         @error('box_number') <p class="text-error">{{ $message }}</p> @enderror
 
         <!-- Bouton enregistrer -->
-        <button type="submit" class="save-btn btn btn-primary w-full mt-2">
+        <button type="submit" class="btn-save">
             Enregistrer
         </button>
 
