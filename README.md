@@ -50,6 +50,54 @@ After cloning the repository and configuring your .env file, run the following c
 
 ### On integration environment
 
+To deploy the project on a server like **SwissCenter**, follow these steps:
+
+## 1. Folder Structure
+
+/laravel      # Where the laravel code belongs
+    ├── app/
+    ├── bootstrap/
+    ├── config/
+    ├── database/
+    ├── routes/
+    └── ...
+
+/public       # Public files
+    ├── css/
+    ├── js/
+    ├── images/
+    └── index.php
+
+## 2. Installation
+
+- Place the `laravel/` folder at the root of the server `/`.
+- Place the `public/` folder at the root of the server `/` or where the web server points.
+- Make sure `public/index.php` correctly references the Laravel application:
+
+php
+require __DIR__ . '/../laravel/vendor/autoload.php';
+$app = require_once __DIR__ . '/../laravel/bootstrap/app.php';
+
+## 3. Permissions
+
+Ensure the storage/ and bootstrap/cache/ folders inside /laravel are writable by the web server:
+
+chmod -R 775 laravel/storage
+chmod -R 775 laravel/bootstrap/cache
+
+4. Configuration
+
+Copy .env.example to .env in /laravel and configure your database and other settings.
+
+Generate the application key:
+
+5. Web Access
+
+The web server should point to the /public folder.
+
+CSS, JS, and image files are accessible via /public.
+
+
 ## Directory structure
 
 ```shell
@@ -92,4 +140,5 @@ project/
 └── routes/
     ├── web.php
     └── console.php
+
 ```
