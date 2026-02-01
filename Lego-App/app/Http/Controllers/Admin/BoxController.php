@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Box;
+use App\Models\Cupboard;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -21,7 +22,9 @@ class BoxController extends Controller
      */
     public function create()
     {
-        return view('admin.boxes.create');
+        $cupboards = Cupboard::all();
+
+        return view('admin.boxes.create', compact('cupboards'));
     }
 
     /**
